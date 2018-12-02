@@ -40,6 +40,18 @@ void practice2(const std::string &a) {
 }//end of practice 2
 
 /*now lets try the above again but without using substring functions. i don't remember if the EPP allows library pre-defined functions such as substring. */
+void practice3(std::string input, int string_position) {
+
+	if (string_position == input.length()) {
+		std::cout << std::endl << "\t\t practice 3 has reached it's end. " << std::endl;
+		return;
+	}
+	if (string_position > input.length()) {
+
+	}
+	
+}
+
 
 int main() {
 	//we start practicing recursions. we start with a simple recursion and learn to progress into different types of recursions
@@ -48,6 +60,10 @@ int main() {
 
 	std::string sample_string = "Hello there!";
 	practice2(sample_string);
+
+	practice3(sample_string, 0);
+
+
 	
 	
 
@@ -55,3 +71,11 @@ int main() {
 	system("pause");
 	return 0;
 }
+
+
+
+// * notes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~    *
+// * it appears that recursion functions are simply just passing *
+// * the function with simple parameters such as				 *
+// * function(int num, int num_of_times-1);					     *
+// * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	     *
