@@ -40,16 +40,48 @@ void practice2(const std::string &a) {
 }//end of practice 2
 
 /*now lets try the above again but without using substring functions. i don't remember if the EPP allows library pre-defined functions such as substring. */
-void practice3(std::string input, int string_position) {
+//void practice3(std::string input, int string_position) {
+//
+//	if (string_position == input.length()) {
+//		std::cout << std::endl << "\t\t practice 3 has reached it's end. " << std::endl;
+//		return;
+//	}
+//	if (string_position > input.length()) {
+//
+//	}
+//	
+//}
 
-	if (string_position == input.length()) {
-		std::cout << std::endl << "\t\t practice 3 has reached it's end. " << std::endl;
-		return;
-	}
-	if (string_position > input.length()) {
-
+//in practice 3 we want to get an array of numbers and be able to sort them without using any predefined sort functions from the library, the following practice number will use a recursive function to do the same thing
+void practice3(int sample[]) {
+	int *ptr = sample;
+	int *next = ptr + 1;
+	int *temp = ptr;
+	for (int x = 0; x < sizeof(sample[0])+1; x++) {
+		ptr = sample;
+		next = ptr + 1;
+		temp = ptr;
+		while(*next != NULL && *ptr != NULL) {
+			if (*ptr > *next) {
+				*temp = *ptr;
+				*ptr = *next;
+				*next = *temp;
+				ptr++; next++;
+			}
+			else { ptr++; next++; }
+		}
 	}
 	
+	std::cout << "this has been rewached";
+	next = sample;
+	
+	std::cout << "the new array is: [ ";
+	while (*next != NULL) {
+		std::cout << *next << ", ";
+		next++;
+	}
+	std::cout << " ]" << std::endl;
+	return;
 }
 
 
@@ -61,7 +93,8 @@ int main() {
 	std::string sample_string = "Hello there!";
 	practice2(sample_string);
 
-	practice3(sample_string, 0);
+	int some_array[] = { 3,5,9,2,1 };
+	practice3(some_array);
 
 
 	
