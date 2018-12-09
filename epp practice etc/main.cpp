@@ -53,35 +53,52 @@ void practice2(const std::string &a) {
 //}
 
 //in practice 3 we want to get an array of numbers and be able to sort them without using any predefined sort functions from the library, the following practice number will use a recursive function to do the same thing
-void practice3(int sample[]) {
-	int *ptr = sample;
+void practice3(int sample_array[]) {
+	int *ptr = &sample_array[0];
 	int *next = ptr + 1;
-	int *temp = ptr;
-	for (int x = 0; x < sizeof(sample[0])+1; x++) {
-		ptr = sample;
-		next = ptr + 1;
-		temp = ptr;
-		while(*next != NULL && *ptr != NULL) {
+	int temp;
+	for (int x = 0; x < sizeof(sample_array); x++) {
+		ptr = &sample_array[0];
+		next = ptr +1;
+		
+		for(int firstloop = 0; firstloop < sizeof(sample_array); firstloop++) { //next is smaller
 			if (*ptr > *next) {
-				*temp = *ptr;
+				temp = *ptr;
 				*ptr = *next;
-				*next = *temp;
+				*next = temp;
 				ptr++; next++;
 			}
 			else { ptr++; next++; }
 		}
 	}
-	
-	std::cout << "this has been rewached";
-	next = sample;
-	
+
+	next = sample_array;
 	std::cout << "the new array is: [ ";
-	while (*next != NULL) {
-		std::cout << *next << ", ";
+	for (int readloop = 0; readloop < sizeof(sample_array)+1; readloop++) {
+		std::cout << *next << " ";
 		next++;
 	}
-	std::cout << " ]" << std::endl;
+	std::cout << "]" << std::endl;
 	return;
+}
+/*the problem: the problem that I had a pointer that would point to the beginning of the array (*temp). and everytime I would use temp to store the temporarily store the value, it would point to the first value within the array
+because i was not also increasing temp along with the function. 
+	Now I could've also just simply also increased temp with the function, but a simple fix was just to make temp an int holder*/
+
+
+//in practice 4, we'll be asking for an array to be input, meaning the array can be as large as the user wants it to be, and then we'll use the above sort algorithm to find the largest and smallest item within the array. 
+void practice4() {
+	int array_size;
+	int values;
+	std::cout << "enter values: ";
+	int element_location = 0;
+	while (values > 0) {
+		std::cin >> values;
+	}
+	std::cout << "last value: " << values;
+
+	
+	
 }
 
 
@@ -93,9 +110,10 @@ int main() {
 	std::string sample_string = "Hello there!";
 	practice2(sample_string);
 
-	int some_array[] = { 3,5,9,2,1 };
+	int some_array[100] = { 0,5,9,2,1 };
 	practice3(some_array);
 
+	practice4();
 
 	
 	
